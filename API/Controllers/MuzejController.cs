@@ -109,12 +109,11 @@ namespace API.Controllers
         }
 
         //Delete za eksponat
-        [Route("UklanjanjeEksponata/{idIzlozbe}")]
+        [Route("UklanjanjeEksponata")]
         [HttpDelete]
-        public async Task<IActionResult> UklanjanjeEksponata(int idIzlozbe, [FromBody] Eksponat eksponat)
+        public async Task<IActionResult> UklanjanjeEksponata([FromBody] Eksponat eksponat)
         {
-            var izlozba = Context.Izlozbe.FindAsync(idIzlozbe);
-            var temp = Context.Eksponati.Where(p => p.X == eksponat.X && p.Y == eksponat.Y && p.Izlozba.ID == idIzlozbe).FirstOrDefault();
+            var temp = Context.Eksponati.Where(p => p.X == eksponat.X && p.Y == eksponat.Y && p.ID == eksponat.ID).FirstOrDefault();
             var umetnik = await Context.Umetnici.FindAsync(temp.UmetnikID);
 
             if(temp != null)

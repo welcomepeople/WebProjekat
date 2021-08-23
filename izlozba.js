@@ -299,7 +299,7 @@ export class Izlozba {
       /////////////////////////////////////////////////////////////////
       //sad ide fetch za delete jednog eksponata
       /////////////////////////////////////////////////////////////////
-      fetch("https://localhost:5001/Muzej/UklanjanjeEksponata/" + this.id, {
+      fetch("https://localhost:5001/Muzej/UklanjanjeEksponata", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
@@ -307,7 +307,8 @@ export class Izlozba {
                 body: JSON.stringify ({
                     "x": i,
                     "y": j,
-                    "umetnikID": temp.umetnik.id
+                    "umetnikID": temp.umetnik.id,
+                    "id": temp.id
                 })
             }).then(p => {
                 if (p.ok)
