@@ -15,7 +15,6 @@ fetch("https://localhost:5001/Muzej/PreuzimanjeIzlozbe").then(p => {
                             if(u.id == eksponat.umetnikID)    {
                                 const um = new Umetnik(u.id, u.ime, u.mestoRodjenja, u.godinaRodjenja, u.brojDela);
                                 izl.listaEksponata[eksponat.x * izl.m + eksponat.y].updateEksponat(eksponat.naziv, eksponat.cena, um, eksponat.tip, eksponat.x, eksponat.y);
-                                console.log(izl.listaEksponata[eksponat.x * izl.m + eksponat.y]);
                             }
                         })
                     })
