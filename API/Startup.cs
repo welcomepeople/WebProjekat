@@ -30,9 +30,7 @@ namespace API
         {
             services.AddCors(options => {
                 options.AddPolicy("CORS", builder => {
-                    builder.AllowAnyHeader().AllowAnyMethod().WithOrigins(new string[]{
-                        "http://127.0.0.1:5500"
-                    });
+                    builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
             services.AddControllers();

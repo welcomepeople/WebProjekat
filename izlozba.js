@@ -257,11 +257,12 @@ export class Izlozba {
       const cena = parseInt(this.kontejner.querySelector(".cena").value);
       let i = parseInt(vrsta.value);
       let j = parseInt(kolona.value);
+      const umetnikSelected = umetnikSelect.value;
 
       /////////////////////////////////////////////////////////////////
       //sad ide fetch za put jednog eksponata
       /////////////////////////////////////////////////////////////////
-      fetch("https://localhost:5001/Muzej/UpdateCenu", {
+      fetch("https://localhost:5001/Muzej/UpdateCenu/"+this.id, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -269,11 +270,11 @@ export class Izlozba {
         body: JSON.stringify({
           "cena": cena,
           "x": i,
-          "y": j
+          "y": j,
         })
       }).then(p => {
         if(p.ok)  {
-          this.listaEksponata[i * this.m + j].updateEksponat(cena);
+          this.listaEksponata[i * this.m + j].updateCena(cena);
         }
         else alert("Doslo je do greske prilikom azuriranja cene");
       })
@@ -294,12 +295,11 @@ export class Izlozba {
       let j = parseInt(kolona.value);
 
       let temp = this.listaEksponata.find(ek => ek.x == i && ek.y == j);
-      console.log(this.id);
 
       /////////////////////////////////////////////////////////////////
       //sad ide fetch za delete jednog eksponata
       /////////////////////////////////////////////////////////////////
-      fetch("https://localhost:5001/Muzej/UklanjanjeEksponata", {
+      fetch("https://localhost:5001/Muzej/UklanjanjeEksponata/"+this.id, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"

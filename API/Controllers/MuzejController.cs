@@ -97,11 +97,11 @@ namespace API.Controllers
         }
         
         //Update za eksponat
-        [Route("UpdateCenu")]
+        [Route("UpdateCenu/{idIzlozbe}")]
         [HttpPut]
-        public async Task AzuriranjeCene([FromBody] Eksponat eksponat)
+        public async Task AzuriranjeCene(int idIzlozbe, [FromBody] Eksponat eksponat)
         {
-            var temp = Context.Eksponati.Where(p => p.X == eksponat.X && p.Y == eksponat.Y).FirstOrDefault();
+            var temp = Context.Eksponati.Where(p => p.X == eksponat.X && p.Y == eksponat.Y && p.Izlozba.ID == idIzlozbe).FirstOrDefault();
             temp.Cena = eksponat.Cena;
 
             Context.Update<Eksponat>(temp);
@@ -109,11 +109,11 @@ namespace API.Controllers
         }
 
         //Delete za eksponat
-        [Route("UklanjanjeEksponata")]
+        [Route("UklanjanjeEksponata/{idIzlozbe}")]
         [HttpDelete]
-        public async Task<IActionResult> UklanjanjeEksponata([FromBody] Eksponat eksponat)
+        public async Task<IActionResult> UklanjanjeEksponata(int idIzlozbe, [FromBody] Eksponat eksponat)
         {
-            var temp = Context.Eksponati.Where(p => p.X == eksponat.X && p.Y == eksponat.Y && p.ID == eksponat.ID).FirstOrDefault();
+            var temp = Context.Eksponati.Where(p => p.X == eksponat.X && p.Y == eksponat.Y && p.Izlozba.ID == idIzlozbe).FirstOrDefault();
             var umetnik = await Context.Umetnici.FindAsync(temp.UmetnikID);
 
             if(temp != null)
