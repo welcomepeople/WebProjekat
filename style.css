@@ -1,0 +1,66 @@
+.kontejner  {
+    display: flex;
+    height: 1000px;
+}
+
+h2  {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:black;
+    margin: 4px;
+}
+
+.forma  {
+    display: flex;
+    height: 720px;
+    flex-direction: column;
+    flex-basis: 200px;
+    margin: 4px;
+    border: 1px solid black;
+    padding: 5px;
+    color: #0d355d;
+    background-color: rgba(250,	235, 215, 0.5);
+}
+
+div {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.kontejnerEksponata {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* flex-wrap: wrap; */
+    flex-basis: 500px;
+    height: 720px;
+    font-size: 18px;
+    opacity: 90%;
+}
+
+.vrsta  {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.eksponat {
+    border: 1px solid black;
+    flex: 1 1 10px;
+    margin: 5px;
+    text-align: center;
+    height: 150px;
+    min-width: 50px;
+    flex-wrap: wrap;
+}
+
+.button  {
+    width: 150px;
+    height: 40px;
+    font-style: italic;
+    margin: 5px;
+}
